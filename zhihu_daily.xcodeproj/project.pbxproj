@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0D44678EBB1E079B4F1582E6 /* libPods-zhihu_daily.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FB5F30FD727FBCC395EEFC2 /* libPods-zhihu_daily.a */; };
+		46CE1BAD222ECE1F00A6E0B3 /* NewsItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 46CE1BAC222ECE1F00A6E0B3 /* NewsItemCell.m */; };
 		6783114F0527C5C77C9367D9 /* libPods-zhihu_dailyUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DA90A0F23D1E73B4AD5C30A5 /* libPods-zhihu_dailyUITests.a */; };
 		BF196645222E0D2900125CE3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BF196644222E0D2900125CE3 /* AppDelegate.m */; };
 		BF19664D222E0D2B00125CE3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF19664C222E0D2B00125CE3 /* Assets.xcassets */; };
@@ -44,6 +45,9 @@
 		0A573ACC9850EA700276AC27 /* Pods-zhihu_daily.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-zhihu_daily.debug.xcconfig"; path = "Pods/Target Support Files/Pods-zhihu_daily/Pods-zhihu_daily.debug.xcconfig"; sourceTree = "<group>"; };
 		0FB5F30FD727FBCC395EEFC2 /* libPods-zhihu_daily.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-zhihu_daily.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4107D0668D4533C59F008DAF /* Pods-zhihu_dailyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-zhihu_dailyTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-zhihu_dailyTests/Pods-zhihu_dailyTests.release.xcconfig"; sourceTree = "<group>"; };
+		46CE1BAB222ECE1F00A6E0B3 /* NewsItemCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewsItemCell.h; sourceTree = "<group>"; };
+		46CE1BAC222ECE1F00A6E0B3 /* NewsItemCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewsItemCell.m; sourceTree = "<group>"; };
+		46CE1BAE222ED2FB00A6E0B3 /* zhihu_daily.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = zhihu_daily.pch; sourceTree = "<group>"; };
 		71522F6ADE920B996C38B42B /* Pods-zhihu_daily.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-zhihu_daily.release.xcconfig"; path = "Pods/Target Support Files/Pods-zhihu_daily/Pods-zhihu_daily.release.xcconfig"; sourceTree = "<group>"; };
 		AE8F59F68C3871B4E812CCF8 /* Pods-zhihu_dailyUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-zhihu_dailyUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-zhihu_dailyUITests/Pods-zhihu_dailyUITests.release.xcconfig"; sourceTree = "<group>"; };
 		B081C5C410CE57883C5589DE /* libPods-zhihu_dailyTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-zhihu_dailyTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -102,6 +106,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		46CE1BAA222ECDF900A6E0B3 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				46CE1BAB222ECE1F00A6E0B3 /* NewsItemCell.h */,
+				46CE1BAC222ECE1F00A6E0B3 /* NewsItemCell.m */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
 		7F267461525DAF1EF7E4E6FC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -192,6 +205,7 @@
 				BF196651222E0D2B00125CE3 /* Info.plist */,
 				BF196643222E0D2900125CE3 /* AppDelegate.h */,
 				BF196644222E0D2900125CE3 /* AppDelegate.m */,
+				46CE1BAE222ED2FB00A6E0B3 /* zhihu_daily.pch */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -266,6 +280,7 @@
 		BFA99168222E37C5005DBAB5 /* POJO */ = {
 			isa = PBXGroup;
 			children = (
+				46CE1BAA222ECDF900A6E0B3 /* Home */,
 			);
 			path = POJO;
 			sourceTree = "<group>";
@@ -490,6 +505,7 @@
 				BFA9916E222E544F005DBAB5 /* HomeModel.m in Sources */,
 				BF196645222E0D2900125CE3 /* AppDelegate.m in Sources */,
 				BFA99162222E21DD005DBAB5 /* CarouselView.m in Sources */,
+				46CE1BAD222ECE1F00A6E0B3 /* NewsItemCell.m in Sources */,
 				BFA9915F222E1EBC005DBAB5 /* HomeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

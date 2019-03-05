@@ -1,0 +1,19 @@
+//
+//  zhihu_daily.pch
+//  zhihu_daily
+//
+//  Created by Larry on 2019/3/5.
+//  Copyright © 2019 朱凌霄. All rights reserved.
+//
+
+#ifndef zhihu_daily_pch
+#define zhihu_daily_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#import "NetOperation.h"
+#import <UIKit/UIKit.h>
+#import <AFNetworking/AFNetworking.h>
+
+#endif /* zhihu_daily_pch */

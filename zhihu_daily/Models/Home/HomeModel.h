@@ -8,13 +8,14 @@
 
 #import <Foundation/Foundation.h>
 #import "NetOperation.h"
+#import "../../POJO/Home/NewsItemCell.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface HomeModel : NSObject
 
 @property(strong, readonly, nonatomic)NSMutableArray *topStories;//不能直接addObject，需要初始化
-@property(strong, nonatomic)NSMutableArray *sectionStories;
+@property(strong, readonly, nonatomic)NSMutableArray *sectionStories;
 @property(assign, nonatomic)BOOL isLoading;
 @property(strong, nonatomic)NSString *currentLoadDayStr; //已加载最靠前那一天的日期字符串
 
@@ -24,6 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView;
 - (NSInteger)numberOfRowsInSection:(NSInteger)section;
 - (NSString *)titleForSection:(NSInteger)section;
+- (NewsItemCell *)cellForRowAtIndexPath:(NSIndexPath *)indexPath;
 //- (StoryCellViewModel *)cellViewModelAtIndexPath:(NSIndexPath *)indexPath;
 
 - (void)getLatestStories;

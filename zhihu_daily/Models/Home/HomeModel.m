@@ -10,22 +10,16 @@
 
 @implementation HomeModel
 
-- (instancetype)init
-{
-    self = [super init];
-    if (self) {
-        self.sectionStories = [[NSMutableArray alloc] init];
-    }
-    return self;
-}
-
 -(void)getLatestStories{
     
     [NetOperation getRequest:@"/api/4/news/latest" success:^(id  _Nonnull responseObject) {
+        
         NSDictionary *jsonDic = responseObject;
-        [self.topStories addObjectsFromArray:jsonDic[@"top_stories"]];
-        [self.sectionStories addObject:jsonDic];
+        NSLog(@"%@", jsonDic);
+        NSMutableArray *tArr = [NSMutableArray arrayWithObject:jsonDic];
+        [self setValue:tArr forKey:@"sectionStories"];
         self.currentLoadDayStr = jsonDic[@"date"];
+        
     } failure:^(NSError * _Nonnull error) {
         NSLog(@"fail");
     }];
@@ -38,6 +32,7 @@
     
     [NetOperation getRequest:strUrl success:^(id  _Nonnull responseObject) {
         NSDictionary *jsonDic = responseObject;
+        NSLog(@"%@", jsonDic);
         [self.sectionStories addObject:jsonDic];
         self.currentLoadDayStr = jsonDic[@"date"];
     } failure:^(NSError * _Nonnull error) {
@@ -65,6 +60,16 @@
     NSString *dateStr = [self.sectionStories[section] objectForKey:@"date"];
     
     return dateStr;
+    
+}
+
+- (NewsItemCell *)cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    NSDictionary *obj = [self.sectionStories objectAtIndex:indexPath.section];
+    
+    NewsItemCell *cell = [[obj objectForKey:@"stories"] objectAtIndex:indexPath.row];
+    
+    return cell;
     
 }
 
