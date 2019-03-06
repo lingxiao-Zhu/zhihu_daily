@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0D44678EBB1E079B4F1582E6 /* libPods-zhihu_daily.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FB5F30FD727FBCC395EEFC2 /* libPods-zhihu_daily.a */; };
 		46CE1BAD222ECE1F00A6E0B3 /* NewsItemCellPOJO.m in Sources */ = {isa = PBXBuildFile; fileRef = 46CE1BAC222ECE1F00A6E0B3 /* NewsItemCellPOJO.m */; };
+		46CE1BB1222FFAD000A6E0B3 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 46CE1BB0222FFAD000A6E0B3 /* Utils.m */; };
 		6783114F0527C5C77C9367D9 /* libPods-zhihu_dailyUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DA90A0F23D1E73B4AD5C30A5 /* libPods-zhihu_dailyUITests.a */; };
 		BF196645222E0D2900125CE3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BF196644222E0D2900125CE3 /* AppDelegate.m */; };
 		BF19664D222E0D2B00125CE3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF19664C222E0D2B00125CE3 /* Assets.xcassets */; };
@@ -51,6 +52,8 @@
 		46CE1BAB222ECE1F00A6E0B3 /* NewsItemCellPOJO.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewsItemCellPOJO.h; sourceTree = "<group>"; };
 		46CE1BAC222ECE1F00A6E0B3 /* NewsItemCellPOJO.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewsItemCellPOJO.m; sourceTree = "<group>"; };
 		46CE1BAE222ED2FB00A6E0B3 /* zhihu_daily.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = zhihu_daily.pch; sourceTree = "<group>"; };
+		46CE1BAF222FFAD000A6E0B3 /* Utils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Utils.h; path = zhihu_daily/Main/Utils.h; sourceTree = SOURCE_ROOT; };
+		46CE1BB0222FFAD000A6E0B3 /* Utils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = Utils.m; path = zhihu_daily/Main/Utils.m; sourceTree = SOURCE_ROOT; };
 		71522F6ADE920B996C38B42B /* Pods-zhihu_daily.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-zhihu_daily.release.xcconfig"; path = "Pods/Target Support Files/Pods-zhihu_daily/Pods-zhihu_daily.release.xcconfig"; sourceTree = "<group>"; };
 		AE8F59F68C3871B4E812CCF8 /* Pods-zhihu_dailyUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-zhihu_dailyUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-zhihu_dailyUITests/Pods-zhihu_dailyUITests.release.xcconfig"; sourceTree = "<group>"; };
 		B081C5C410CE57883C5589DE /* libPods-zhihu_dailyTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-zhihu_dailyTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -203,6 +206,8 @@
 		BFA99151222E11F4005DBAB5 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				46CE1BAF222FFAD000A6E0B3 /* Utils.h */,
+				46CE1BB0222FFAD000A6E0B3 /* Utils.m */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -524,6 +529,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BFA9916B222E3869005DBAB5 /* NetOperation.m in Sources */,
+				46CE1BB1222FFAD000A6E0B3 /* Utils.m in Sources */,
 				BF196653222E0D2B00125CE3 /* main.m in Sources */,
 				BFA9916E222E544F005DBAB5 /* HomeModel.m in Sources */,
 				BF196645222E0D2900125CE3 /* AppDelegate.m in Sources */,

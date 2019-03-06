@@ -21,6 +21,7 @@ static const CGFloat kSectionHeaderHeight = 50.f;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.homeModel = [[HomeModel alloc] init];
     [self configAllObservers];
     [self.homeModel getLatestStories];
@@ -59,9 +60,9 @@ static const CGFloat kSectionHeaderHeight = 50.f;
     return [self.homeModel titleForSection:section];
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 70.f;
-}
+//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+//    return 70.f;
+//}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
@@ -72,6 +73,8 @@ static const CGFloat kSectionHeaderHeight = 50.f;
     }
    
     NewsItemCellPOJO *newsItemCellPOJO = [self.homeModel cellForRowAtIndexPath:indexPath];
+    
+    cell.imgView.image = [Utils imageFromURLString:[newsItemCellPOJO.images firstObject]];
     
     cell.titleLabel.text = newsItemCellPOJO.title;
     

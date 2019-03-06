@@ -11,6 +11,6 @@
 @interface TableCellView : UITableViewCell
 
 @property(strong, nonatomic)UILabel *titleLabel;
-@property(strong, nonatomic)UIImageView *picImgView;
+@property(strong, nonatomic)UIImageView *imgView;
 
 @end

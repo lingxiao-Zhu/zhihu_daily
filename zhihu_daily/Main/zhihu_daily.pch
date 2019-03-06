@@ -16,5 +16,6 @@
 #import <UIKit/UIKit.h>
 #import <JSONModel/JSONModel.h>
 #import <Masonry/Masonry.h>
+#import "Utils.h"
 
 #endif /* zhihu_daily_pch */
