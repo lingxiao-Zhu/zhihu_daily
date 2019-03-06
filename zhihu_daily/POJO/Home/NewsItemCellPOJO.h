@@ -10,11 +10,12 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface NewsItemCell : NSObject
+@interface NewsItemCellPOJO : JSONModel
 
-@property (strong, readonly,nonatomic)NSString *storyID;
+@property (strong, nonatomic)NSString *storyID;
 @property (strong, nonatomic)NSString *title;
-@property (strong, nonatomic)UIImage *image;
+@property (strong, nonatomic)NSArray *images;
+@property (assign, nonatomic)BOOL multipic;
 
 @end
 

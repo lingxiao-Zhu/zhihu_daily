@@ -7,6 +7,10 @@
 //
 
 #import "HomeViewController.h"
+#import "SectionTitleView.h"
+#import "TableCellView.h"
+
+static const CGFloat kSectionHeaderHeight = 50.f;
 
 @interface HomeViewController ()
 
@@ -55,13 +59,47 @@
     return [self.homeModel titleForSection:section];
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 70.f;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"StoryItem"];
+    TableCellView *cell = [tableView dequeueReusableCellWithIdentifier:@"StoryItem"];
     
-    cell.textLabel.text = @"aaaa";
+    if(cell == nil){
+        cell = [[TableCellView alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"StoryItem"];
+    }
+   
+    NewsItemCellPOJO *newsItemCellPOJO = [self.homeModel cellForRowAtIndexPath:indexPath];
+    
+    cell.titleLabel.text = newsItemCellPOJO.title;
     
     return cell;
+    
+}
+
+#pragma mark - UITableViewDelegate
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+//    if(section == 0){
+//        return 0;
+//    }
+    return kSectionHeaderHeight;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    
+    SectionTitleView *sHeader = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"SectionHeader"];
+    
+    if(sHeader == nil){
+        sHeader = [[SectionTitleView alloc] initWithReuseIdentifier:@"SectionHeader"];
+    }
+    
+    [sHeader setHeaderFooterBackgroundColor:[UIColor colorWithRed:60.f/255.f green:198.f/255.f blue:253.f/255.f alpha:1.f]];
+    
+    sHeader.textLabel.textColor = [UIColor whiteColor];
+    
+    return sHeader;
     
 }
 

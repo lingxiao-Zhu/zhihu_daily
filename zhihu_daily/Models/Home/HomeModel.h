@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "NetOperation.h"
-#import "../../POJO/Home/NewsItemCell.h"
+#import "NewsItemCellPOJO.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -25,7 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView;
 - (NSInteger)numberOfRowsInSection:(NSInteger)section;
 - (NSString *)titleForSection:(NSInteger)section;
-- (NewsItemCell *)cellForRowAtIndexPath:(NSIndexPath *)indexPath;
+- (NewsItemCellPOJO *)cellForRowAtIndexPath:(NSIndexPath *)indexPath;
 //- (StoryCellViewModel *)cellViewModelAtIndexPath:(NSIndexPath *)indexPath;
 
 - (void)getLatestStories;

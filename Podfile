@@ -5,7 +5,8 @@ target 'zhihu_daily' do
   # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
   # use_frameworks!
   pod 'AFNetworking', '~> 3.1.0'
-
+  pod 'JSONModel', '~> 1.8.0'
+  pod 'Masonry', '~> 1.1.0'
   # Pods for zhihu_daily
 
   target 'zhihu_dailyTests' do

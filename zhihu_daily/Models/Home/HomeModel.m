@@ -7,19 +7,17 @@
 //
 
 #import "HomeModel.h"
+#import "NSDateFormatter+Extension.h"
 
 @implementation HomeModel
 
 -(void)getLatestStories{
     
     [NetOperation getRequest:@"/api/4/news/latest" success:^(id  _Nonnull responseObject) {
-        
         NSDictionary *jsonDic = responseObject;
-        NSLog(@"%@", jsonDic);
         NSMutableArray *tArr = [NSMutableArray arrayWithObject:jsonDic];
         [self setValue:tArr forKey:@"sectionStories"];
         self.currentLoadDayStr = jsonDic[@"date"];
-        
     } failure:^(NSError * _Nonnull error) {
         NSLog(@"fail");
     }];
@@ -32,7 +30,6 @@
     
     [NetOperation getRequest:strUrl success:^(id  _Nonnull responseObject) {
         NSDictionary *jsonDic = responseObject;
-        NSLog(@"%@", jsonDic);
         [self.sectionStories addObject:jsonDic];
         self.currentLoadDayStr = jsonDic[@"date"];
     } failure:^(NSError * _Nonnull error) {
@@ -59,15 +56,29 @@
     
     NSString *dateStr = [self.sectionStories[section] objectForKey:@"date"];
     
-    return dateStr;
+    return [self stringConvertToSectionTitleText:dateStr];
     
 }
 
-- (NewsItemCell *)cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+- (NSString*)stringConvertToSectionTitleText:(NSString*)str {
     
-    NSDictionary *obj = [self.sectionStories objectAtIndex:indexPath.section];
+    NSDateFormatter *formatter = [NSDateFormatter sharedInstance];
+    [formatter setDateFormat:@"yyyyMMdd"];
+    NSDate *date = [formatter dateFromString:str];
+    formatter.locale = [NSLocale localeWithLocaleIdentifier:@"zh-CH"];
+    [formatter setDateFormat:@"MM月dd日 EEEE"];
+    NSString *sectionTitleText = [formatter stringFromDate:date];
     
-    NewsItemCell *cell = [[obj objectForKey:@"stories"] objectAtIndex:indexPath.row];
+    return sectionTitleText;
+}
+
+- (NewsItemCellPOJO *)cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    NSDictionary *section = [self.sectionStories objectAtIndex:indexPath.section];
+    
+    NSDictionary *story = [[section objectForKey:@"stories"] objectAtIndex:indexPath.row];
+    
+    NewsItemCellPOJO *cell = [[NewsItemCellPOJO alloc] initWithDictionary:story error:nil];
     
     return cell;
     
