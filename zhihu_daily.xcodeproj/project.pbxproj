@@ -18,9 +18,10 @@
 		BF19665D222E0D2B00125CE3 /* zhihu_dailyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BF19665C222E0D2B00125CE3 /* zhihu_dailyTests.m */; };
 		BF196668222E0D2B00125CE3 /* zhihu_dailyUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = BF196667222E0D2B00125CE3 /* zhihu_dailyUITests.m */; };
 		BF9A0633222FB26000142ED9 /* TableCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = BF9A0632222FB26000142ED9 /* TableCellView.m */; };
+		BF9A06362230C47400142ED9 /* CarouselItemPOJO.m in Sources */ = {isa = PBXBuildFile; fileRef = BF9A06352230C47400142ED9 /* CarouselItemPOJO.m */; };
+		BF9A063922311A5200142ED9 /* HeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = BF9A063822311A5200142ED9 /* HeaderView.m */; };
 		BFA9915F222E1EBC005DBAB5 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFA9915E222E1EBC005DBAB5 /* HomeViewController.m */; };
 		BFA99162222E21DD005DBAB5 /* CarouselView.m in Sources */ = {isa = PBXBuildFile; fileRef = BFA99161222E21DD005DBAB5 /* CarouselView.m */; };
-		BFA99164222E27A2005DBAB5 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFA99163222E27A2005DBAB5 /* MainStoryboard.storyboard */; };
 		BFA9916B222E3869005DBAB5 /* NetOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = BFA9916A222E3869005DBAB5 /* NetOperation.m */; };
 		BFA9916E222E544F005DBAB5 /* HomeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BFA9916D222E544F005DBAB5 /* HomeModel.m */; };
 		BFA99174222F693D005DBAB5 /* SectionTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = BFA99173222F693D005DBAB5 /* SectionTitleView.m */; };
@@ -72,11 +73,14 @@
 		BF196669222E0D2B00125CE3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BF9A0631222FB26000142ED9 /* TableCellView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TableCellView.h; sourceTree = "<group>"; };
 		BF9A0632222FB26000142ED9 /* TableCellView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TableCellView.m; sourceTree = "<group>"; };
+		BF9A06342230C47400142ED9 /* CarouselItemPOJO.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CarouselItemPOJO.h; sourceTree = "<group>"; };
+		BF9A06352230C47400142ED9 /* CarouselItemPOJO.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CarouselItemPOJO.m; sourceTree = "<group>"; };
+		BF9A063722311A5200142ED9 /* HeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HeaderView.h; sourceTree = "<group>"; };
+		BF9A063822311A5200142ED9 /* HeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HeaderView.m; sourceTree = "<group>"; };
 		BFA9915D222E1EBC005DBAB5 /* HomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		BFA9915E222E1EBC005DBAB5 /* HomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		BFA99160222E21DD005DBAB5 /* CarouselView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CarouselView.h; sourceTree = "<group>"; };
 		BFA99161222E21DD005DBAB5 /* CarouselView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CarouselView.m; sourceTree = "<group>"; };
-		BFA99163222E27A2005DBAB5 /* MainStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
 		BFA99169222E3869005DBAB5 /* NetOperation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetOperation.h; sourceTree = "<group>"; };
 		BFA9916A222E3869005DBAB5 /* NetOperation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NetOperation.m; sourceTree = "<group>"; };
 		BFA9916C222E544F005DBAB5 /* HomeModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeModel.h; sourceTree = "<group>"; };
@@ -123,6 +127,8 @@
 			children = (
 				46CE1BAB222ECE1F00A6E0B3 /* NewsItemCellPOJO.h */,
 				46CE1BAC222ECE1F00A6E0B3 /* NewsItemCellPOJO.m */,
+				BF9A06342230C47400142ED9 /* CarouselItemPOJO.h */,
+				BF9A06352230C47400142ED9 /* CarouselItemPOJO.m */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -171,7 +177,6 @@
 				BFA99152222E1213005DBAB5 /* Main */,
 				BFA99150222E11DE005DBAB5 /* General */,
 				BF19664C222E0D2B00125CE3 /* Assets.xcassets */,
-				BFA99163222E27A2005DBAB5 /* MainStoryboard.storyboard */,
 			);
 			path = zhihu_daily;
 			sourceTree = "<group>";
@@ -274,6 +279,8 @@
 				BFA99173222F693D005DBAB5 /* SectionTitleView.m */,
 				BF9A0631222FB26000142ED9 /* TableCellView.h */,
 				BF9A0632222FB26000142ED9 /* TableCellView.m */,
+				BF9A063722311A5200142ED9 /* HeaderView.h */,
+				BF9A063822311A5200142ED9 /* HeaderView.m */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -432,7 +439,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BFA99164222E27A2005DBAB5 /* MainStoryboard.storyboard in Resources */,
 				BF196650222E0D2B00125CE3 /* LaunchScreen.storyboard in Resources */,
 				BF19664D222E0D2B00125CE3 /* Assets.xcassets in Resources */,
 			);
@@ -528,6 +534,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF9A063922311A5200142ED9 /* HeaderView.m in Sources */,
 				BFA9916B222E3869005DBAB5 /* NetOperation.m in Sources */,
 				46CE1BB1222FFAD000A6E0B3 /* Utils.m in Sources */,
 				BF196653222E0D2B00125CE3 /* main.m in Sources */,
@@ -538,6 +545,7 @@
 				BFA9917A222F9DC3005DBAB5 /* NSDateFormatter+Extension.m in Sources */,
 				BF9A0633222FB26000142ED9 /* TableCellView.m in Sources */,
 				BFA9915F222E1EBC005DBAB5 /* HomeViewController.m in Sources */,
+				BF9A06362230C47400142ED9 /* CarouselItemPOJO.m in Sources */,
 				BFA99174222F693D005DBAB5 /* SectionTitleView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

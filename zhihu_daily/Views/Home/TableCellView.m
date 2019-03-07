@@ -34,7 +34,6 @@
         
         [self.contentView addSubview: self.imgView];
         
-        
         [self.imgView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.size.mas_equalTo(CGSizeMake(90, 60));
             make.right.equalTo(self.contentView).offset(-10);
@@ -55,15 +54,15 @@
         }];
         
         //3.添加分割线
-        UIView *divider = [[UIView alloc] init];
-        divider.backgroundColor = [UIColor colorWithRed:245.f/255.f green:245.f/255.f blue:245.f/255.f alpha:1.f];
-        [self.contentView addSubview:divider];
-        [divider mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(self.contentView).offset(10);
-            make.right.equalTo(self.contentView).offset(-10);
-            make.bottom.equalTo(self.contentView);
-            make.height.mas_equalTo(1);
-        }];
+//        UIView *divider = [[UIView alloc] init];
+//        divider.backgroundColor = [UIColor colorWithRed:245.f/255.f green:245.f/255.f blue:245.f/255.f alpha:1.f];
+//        [self.contentView addSubview:divider];
+//        [divider mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.left.equalTo(self.contentView).offset(10);
+//            make.right.equalTo(self.contentView).offset(-10);
+//            make.bottom.equalTo(self.contentView);
+//            make.height.mas_equalTo(1);
+//        }];
         
     }
     

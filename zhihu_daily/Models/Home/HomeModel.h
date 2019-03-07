@@ -26,7 +26,6 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSInteger)numberOfRowsInSection:(NSInteger)section;
 - (NSString *)titleForSection:(NSInteger)section;
 - (NewsItemCellPOJO *)cellForRowAtIndexPath:(NSIndexPath *)indexPath;
-//- (StoryCellViewModel *)cellViewModelAtIndexPath:(NSIndexPath *)indexPath;
 
 - (void)getLatestStories;
 - (void)getBeforeStories;

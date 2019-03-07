@@ -15,9 +15,15 @@
     
     [NetOperation getRequest:@"/api/4/news/latest" success:^(id  _Nonnull responseObject) {
         NSDictionary *jsonDic = responseObject;
-        NSMutableArray *tArr = [NSMutableArray arrayWithObject:jsonDic];
-        [self setValue:tArr forKey:@"sectionStories"];
+
+        NSMutableArray *sectionArr = [NSMutableArray arrayWithObject:jsonDic];
+        NSMutableArray *topArr = [[NSMutableArray alloc] initWithArray:[jsonDic objectForKey:@"top_stories"]];
+        
+        [self setValue:sectionArr forKey:@"sectionStories"];
+        [self setValue:topArr forKey:@"topStories"];
+
         self.currentLoadDayStr = jsonDic[@"date"];
+        
     } failure:^(NSError * _Nonnull error) {
         NSLog(@"fail");
     }];

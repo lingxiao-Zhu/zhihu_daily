@@ -7,6 +7,7 @@ target 'zhihu_daily' do
   pod 'AFNetworking', '~> 3.1.0'
   pod 'JSONModel', '~> 1.8.0'
   pod 'Masonry', '~> 1.1.0'
+  pod 'SDCycleScrollView','~> 1.75'
   # Pods for zhihu_daily
 
   target 'zhihu_dailyTests' do

@@ -7,10 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <SDCycleScrollView/SDCycleScrollView.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface CarouselView : UIView
+@interface CarouselView : UIView <SDCycleScrollViewDelegate>
+
+-(void)setTitle:(NSArray *)titles;
+
+-(void)setImageUrls:(NSArray *)imageUrls;
+
+-(void)setRect:(CGRect)rect;
 
 @end
 

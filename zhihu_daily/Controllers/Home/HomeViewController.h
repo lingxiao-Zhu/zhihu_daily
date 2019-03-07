@@ -12,7 +12,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface HomeViewController : UITableViewController
+@interface HomeViewController : UIViewController<UITableViewDelegate, UITableViewDataSource>
 
 @property(strong, nonatomic)HomeModel *homeModel;
 
