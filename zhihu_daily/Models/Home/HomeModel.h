@@ -18,6 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property(strong, readonly, nonatomic)NSMutableArray *sectionStories;
 @property(assign, nonatomic)BOOL isLoading;
 @property(strong, nonatomic)NSString *currentLoadDayStr; //已加载最靠前那一天的日期字符串
+@property(strong, nonatomic)NSMutableArray *storyIDs;
 
 //NSUInteger是无符号的
 //int和NSInteger其实是差不多的，但更推荐使用NSInteger，因为使用NSInteger,这样就不用考虑设备是32位还是64位了。

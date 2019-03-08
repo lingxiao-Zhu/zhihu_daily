@@ -20,6 +20,7 @@
 		BF9A0633222FB26000142ED9 /* TableCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = BF9A0632222FB26000142ED9 /* TableCellView.m */; };
 		BF9A06362230C47400142ED9 /* CarouselItemPOJO.m in Sources */ = {isa = PBXBuildFile; fileRef = BF9A06352230C47400142ED9 /* CarouselItemPOJO.m */; };
 		BF9A063922311A5200142ED9 /* HeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = BF9A063822311A5200142ED9 /* HeaderView.m */; };
+		BF9A063C2232438F00142ED9 /* RefreshView.m in Sources */ = {isa = PBXBuildFile; fileRef = BF9A063B2232438F00142ED9 /* RefreshView.m */; };
 		BFA9915F222E1EBC005DBAB5 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFA9915E222E1EBC005DBAB5 /* HomeViewController.m */; };
 		BFA99162222E21DD005DBAB5 /* CarouselView.m in Sources */ = {isa = PBXBuildFile; fileRef = BFA99161222E21DD005DBAB5 /* CarouselView.m */; };
 		BFA9916B222E3869005DBAB5 /* NetOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = BFA9916A222E3869005DBAB5 /* NetOperation.m */; };
@@ -77,6 +78,8 @@
 		BF9A06352230C47400142ED9 /* CarouselItemPOJO.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CarouselItemPOJO.m; sourceTree = "<group>"; };
 		BF9A063722311A5200142ED9 /* HeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HeaderView.h; sourceTree = "<group>"; };
 		BF9A063822311A5200142ED9 /* HeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HeaderView.m; sourceTree = "<group>"; };
+		BF9A063A2232438F00142ED9 /* RefreshView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RefreshView.h; sourceTree = "<group>"; };
+		BF9A063B2232438F00142ED9 /* RefreshView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RefreshView.m; sourceTree = "<group>"; };
 		BFA9915D222E1EBC005DBAB5 /* HomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		BFA9915E222E1EBC005DBAB5 /* HomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		BFA99160222E21DD005DBAB5 /* CarouselView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CarouselView.h; sourceTree = "<group>"; };
@@ -274,13 +277,15 @@
 			isa = PBXGroup;
 			children = (
 				BFA99160222E21DD005DBAB5 /* CarouselView.h */,
-				BFA99161222E21DD005DBAB5 /* CarouselView.m */,
 				BFA99172222F693D005DBAB5 /* SectionTitleView.h */,
 				BFA99173222F693D005DBAB5 /* SectionTitleView.m */,
+				BFA99161222E21DD005DBAB5 /* CarouselView.m */,
 				BF9A0631222FB26000142ED9 /* TableCellView.h */,
 				BF9A0632222FB26000142ED9 /* TableCellView.m */,
 				BF9A063722311A5200142ED9 /* HeaderView.h */,
 				BF9A063822311A5200142ED9 /* HeaderView.m */,
+				BF9A063A2232438F00142ED9 /* RefreshView.h */,
+				BF9A063B2232438F00142ED9 /* RefreshView.m */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -538,6 +543,7 @@
 				BFA9916B222E3869005DBAB5 /* NetOperation.m in Sources */,
 				46CE1BB1222FFAD000A6E0B3 /* Utils.m in Sources */,
 				BF196653222E0D2B00125CE3 /* main.m in Sources */,
+				BF9A063C2232438F00142ED9 /* RefreshView.m in Sources */,
 				BFA9916E222E544F005DBAB5 /* HomeModel.m in Sources */,
 				BF196645222E0D2900125CE3 /* AppDelegate.m in Sources */,
 				BFA99162222E21DD005DBAB5 /* CarouselView.m in Sources */,

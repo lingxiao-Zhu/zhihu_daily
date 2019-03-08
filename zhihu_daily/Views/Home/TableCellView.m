@@ -35,7 +35,7 @@
         [self.contentView addSubview: self.imgView];
         
         [self.imgView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.size.mas_equalTo(CGSizeMake(90, 60));
+            make.size.mas_equalTo(CGSizeMake(80, 50));
             make.right.equalTo(self.contentView).offset(-10);
             make.top.equalTo(self.contentView).offset(10);
             make.bottom.equalTo(self.contentView).offset(-10);
@@ -53,16 +53,16 @@
             make.right.equalTo(self.imgView.mas_left).offset(-10);
         }];
         
-        //3.添加分割线
-//        UIView *divider = [[UIView alloc] init];
-//        divider.backgroundColor = [UIColor colorWithRed:245.f/255.f green:245.f/255.f blue:245.f/255.f alpha:1.f];
-//        [self.contentView addSubview:divider];
-//        [divider mas_makeConstraints:^(MASConstraintMaker *make) {
-//            make.left.equalTo(self.contentView).offset(10);
-//            make.right.equalTo(self.contentView).offset(-10);
-//            make.bottom.equalTo(self.contentView);
-//            make.height.mas_equalTo(1);
-//        }];
+        //3.添加是否多图说明
+        self.morePicView = [[UIImageView alloc] init];
+        self.morePicView.contentMode = UIViewContentModeScaleAspectFill;
+        self.morePicView.clipsToBounds = YES;
+        [self.contentView addSubview: self.morePicView];
+        [self.morePicView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.size.mas_equalTo(CGSizeMake(30, 15));
+            make.right.equalTo(self.imgView);
+            make.bottom.equalTo(self.imgView);
+        }];
         
     }
     

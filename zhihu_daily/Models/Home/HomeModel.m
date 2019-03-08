@@ -14,14 +14,16 @@
 -(void)getLatestStories{
     
     [NetOperation getRequest:@"/api/4/news/latest" success:^(id  _Nonnull responseObject) {
+        
         NSDictionary *jsonDic = responseObject;
-
+        
         NSMutableArray *sectionArr = [NSMutableArray arrayWithObject:jsonDic];
+        
         NSMutableArray *topArr = [[NSMutableArray alloc] initWithArray:[jsonDic objectForKey:@"top_stories"]];
         
         [self setValue:sectionArr forKey:@"sectionStories"];
         [self setValue:topArr forKey:@"topStories"];
-
+        
         self.currentLoadDayStr = jsonDic[@"date"];
         
     } failure:^(NSError * _Nonnull error) {
@@ -32,14 +34,28 @@
 
 -(void)getBeforeStories{
     
-    NSString *strUrl = [NSString stringWithFormat:@"/api/4/news/before%@", self.currentLoadDayStr];
+    if(self.isLoading == YES) return;
+    
+    self.isLoading = YES;
+    
+    NSString *strUrl = [NSString stringWithFormat:@"/api/4/news/before/%@", self.currentLoadDayStr];
     
     [NetOperation getRequest:strUrl success:^(id  _Nonnull responseObject) {
+        
+        self.isLoading = NO;
+        
         NSDictionary *jsonDic = responseObject;
-        [self.sectionStories addObject:jsonDic];
+        
+        [[self mutableArrayValueForKey:@"sectionStories"] addObject:jsonDic];
+        
         self.currentLoadDayStr = jsonDic[@"date"];
+        
     } failure:^(NSError * _Nonnull error) {
+        
+        self.isLoading = NO;
+        
         NSLog(@"fail");
+        
     }];
     
 }

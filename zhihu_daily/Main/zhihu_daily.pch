@@ -21,5 +21,6 @@
 #import <JSONModel/JSONModel.h>
 #import <Masonry/Masonry.h>
 #import "Utils.h"
+#import "UIImageView+WebCache.h"
 
 #endif /* zhihu_daily_pch */

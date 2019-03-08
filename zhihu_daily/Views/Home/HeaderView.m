@@ -22,25 +22,25 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-       self.backgroundColor = [UIColor clearColor];
         
-        _backgroundView = ({
-            UIView *view = [UIView new];
-            [self addSubview:view];
-            [view mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.height.mas_equalTo(frame.size.height);
-                make.top.left.right.equalTo(self);//设置长宽
-            }];
-            
-            view;
-        });
+        self.backgroundColor = [UIColor clearColor];
         
+        _backgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
+        
+        _backgroundView.backgroundColor = [UIColor colorWithRed:60.f/255.f green:198.f/255.f blue:253.f/255.f alpha: 1];
+
+        [self addSubview:_backgroundView];
+        
+        [_backgroundView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.left.right.bottom.equalTo(self);//设置长宽
+        }];
+
         _titleLab = ({
             UILabel *label = [UILabel new];
             [self addSubview:label];
             [label mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.centerX.equalTo(self);
-                make.bottom.equalTo(self.backgroundView).offset(-10);
+                make.bottom.equalTo(self.backgroundView).offset(-7);
             }];
             label;
         });

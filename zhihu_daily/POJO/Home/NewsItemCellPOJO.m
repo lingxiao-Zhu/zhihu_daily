@@ -20,9 +20,9 @@
     if([propertyName isEqualToString:@"multipic"]){
         return YES;
     }
-    if([propertyName isEqualToString:@"images"]) {
-        return YES;
-    }
+//    if([propertyName isEqualToString:@"images"]) {
+//        return YES;
+//    }
     return NO;
 }
 

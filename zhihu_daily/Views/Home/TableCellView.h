@@ -12,5 +12,6 @@
 
 @property(strong, nonatomic)UILabel *titleLabel;
 @property(strong, nonatomic)UIImageView *imgView;
+@property(strong, nonatomic)UIImageView *morePicView;
 
 @end

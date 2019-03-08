@@ -11,23 +11,29 @@
 #import "TableCellView.h"
 #import "CarouselView.h"
 #import "HeaderView.h"
+#import "RefreshView.h"
 #import "CarouselItemPOJO.h"
 
-static const CGFloat kSectionHeaderHeight = 50.f;
+static const CGFloat kSectionHeaderHeight = 40.f;
 static const CGFloat CarouselViewHeight = 240.f;
+static const CGFloat Distance = -80.f;//限制下拉高度
+static const CGFloat ExtarHeaderHeight = 38.f;
 
 @interface HomeViewController ()
 
 @property(strong, nonatomic)CarouselView *carouselView;
 @property(strong, nonatomic)UITableView *tableView;
 @property(strong, nonatomic)HeaderView *headerView;
+@property(strong, nonatomic)RefreshView *refreshView;
 
 @end
 
 @implementation HomeViewController
 
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
+    
     // Do any additional setup after loading the view.
     self.homeModel = [[HomeModel alloc] init];
     
@@ -37,24 +43,15 @@ static const CGFloat CarouselViewHeight = 240.f;
     [self.homeModel getLatestStories];
 }
 
--(void)prepareHeader{
-    
-    self.headerView = [[HeaderView alloc] initWithFrame:CGRectMake(0.f, 0.f, kScreenWidth, KSafeAreaTop + 38.f)];
-    
-    self.headerView.titleLab.attributedText = [[NSAttributedString alloc] initWithString:@"今日新闻" attributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:18],NSForegroundColorAttributeName:[UIColor whiteColor]}];
-    
-    [self.view addSubview:self.headerView];
-    
-}
-
 -(void)prepareTableView{
     
     UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight)];
     
-    tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    [tableView setSeparatorColor:[UIColor colorWithRed:230/255.f green:230/255.f blue:230/255.f alpha:1]];
     tableView.delegate = self;
     tableView.dataSource = self;
     tableView.contentInset = UIEdgeInsetsMake(-KSafeAreaTop, 0, 0, 0);
+    [tableView setSeparatorInset:UIEdgeInsetsMake(10, 10, 10, 10)];
     
     self.tableView = tableView;
     
@@ -73,6 +70,31 @@ static const CGFloat CarouselViewHeight = 240.f;
     self.tableView.tableHeaderView = self.carouselView;
     
     [self prepareHeader];
+    
+}
+
+-(void)prepareHeader{
+    
+    self.headerView = [[HeaderView alloc] initWithFrame:CGRectMake(0.f, 0.f, kScreenWidth, KSafeAreaTop + ExtarHeaderHeight)];
+    
+    self.headerView.titleLab.attributedText = [[NSAttributedString alloc] initWithString:@"今日要闻" attributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:18],NSForegroundColorAttributeName:[UIColor whiteColor]}];
+    
+    [self.view addSubview:self.headerView];
+    
+    [self prepareRefreshView];
+    
+}
+
+-(void)prepareRefreshView{
+    
+    self.refreshView = [[RefreshView alloc] initWithFrame:CGRectMake(0.f,0, 20.f, 20.f)];
+    
+    [self.view addSubview:self.refreshView];
+    
+    [self.refreshView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.headerView.titleLab);
+        make.left.equalTo(self.headerView.titleLab).offset(-25);
+    }];
     
 }
 
@@ -97,11 +119,9 @@ static const CGFloat CarouselViewHeight = 240.f;
     }
     
     if([keyPath isEqualToString:@"topStories"]){
-        
         NSMutableArray *titles = [[NSMutableArray alloc] init];
         NSMutableArray *images = [[NSMutableArray alloc] init];
         NSArray *topStorys = [[NSArray alloc] initWithArray:self.homeModel.topStories];
-        
         for(int i = 0; i < topStorys.count; i++){
             CarouselItemPOJO *cItem = [[CarouselItemPOJO alloc] initWithDictionary:topStorys[i] error:nil];
             [titles addObject:cItem.title];
@@ -136,9 +156,18 @@ static const CGFloat CarouselViewHeight = 240.f;
    
     NewsItemCellPOJO *newsItemCellPOJO = [self.homeModel cellForRowAtIndexPath:indexPath];
     
-    cell.imgView.image = [Utils imageFromURLString:[newsItemCellPOJO.images firstObject]];
+    //文章主图
+    NSURL *url = [NSURL URLWithString:[newsItemCellPOJO.images firstObject]];
+    
+    [cell.imgView sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"Image_Preview"]];
     
     cell.titleLabel.text = newsItemCellPOJO.title;
+    
+    if(newsItemCellPOJO.multipic){
+        cell.morePicView.image = [UIImage imageNamed:@"Home_Morepic"];
+    }else{
+        cell.morePicView.image = nil;
+    }
     
     return cell;
     
@@ -146,9 +175,9 @@ static const CGFloat CarouselViewHeight = 240.f;
 
 #pragma mark - UITableViewDelegate
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-//    if(section == 0){
-//        return 0;
-//    }
+    if(section == 0){
+        return 0;
+    }
     return kSectionHeaderHeight;
 }
 
@@ -169,28 +198,52 @@ static const CGFloat CarouselViewHeight = 240.f;
 }
 
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-  
+//监听释放拖拽
+- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset{
     //获取偏移量
     CGFloat y = scrollView.contentOffset.y;
+    if(y <= Distance && !self.refreshView.refresh){
+        [self.refreshView startAnimation];
+        [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(stopAnimaion) userInfo:nil repeats:NO];
+    }
+}
+
+-(void)stopAnimaion{
+    [_refreshView stopAnimation];
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    
+    //获取偏移量
+    CGFloat y = scrollView.contentOffset.y;
+    
+    if(y > 620){
+        self.headerView.titleLab.alpha = 0;
+        [self.headerView.backgroundView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.bottom.equalTo(self.headerView).offset(-ExtarHeaderHeight);
+        }];
+        self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
+    }else{
+        self.headerView.titleLab.alpha = 1;
+        [self.headerView.backgroundView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.bottom.equalTo(self.headerView);
+        }];
+        self.tableView.contentInset = UIEdgeInsetsMake(-KSafeAreaTop, 0, 0, 0);
+    }
     
     if (y <= 0 ) {
         
         //恢复header颜色
-        self.headerView.backgroundColor = [UIColor colorWithRed:60.f/255.f green:198.f/255.f blue:253.f/255.f alpha:0];
+        self.headerView.backgroundView.alpha = 0;
         
-        //限制下拉距离
-        NSInteger distance = -80;
+        [_refreshView redrawFromProgress:y/Distance];
         
-        if(scrollView.contentOffset.y < distance && scrollView.isDragging){
-            
-            y = distance;
-            
-            [scrollView setContentOffset:CGPointMake(0, distance)];
-            
+        if(scrollView.contentOffset.y < Distance && scrollView.isDragging){
+            y = Distance;
+            [scrollView setContentOffset:CGPointMake(0, Distance)];
         }
         
-        //我们只需要改变图片的y值和高度即可
+        //拉伸轮播图
         CGRect rect = self.tableView.tableHeaderView.frame;
         rect.origin.y = y;
         rect.size.height = CarouselViewHeight - y;
@@ -198,8 +251,10 @@ static const CGFloat CarouselViewHeight = 240.f;
     
     }else{
         
+        [_refreshView redrawFromProgress:0];
+        
         //改变header颜色
-        self.headerView.backgroundColor = [UIColor colorWithRed:60.f/255.f green:198.f/255.f blue:253.f/255.f alpha: y / (CarouselViewHeight-38.f)];
+        self.headerView.backgroundView.alpha = y / (CarouselViewHeight-ExtarHeaderHeight);
         
     }
     
@@ -208,6 +263,15 @@ static const CGFloat CarouselViewHeight = 240.f;
 //实现分页
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
     
+    NewsItemCellPOJO *nowStoryInfo = [self.homeModel cellForRowAtIndexPath:indexPath];
+    
+    NSDictionary *lastStoryInfoDic = [[[self.homeModel.sectionStories lastObject] objectForKey:@"stories"] lastObject];
+    
+    NewsItemCellPOJO *lastStoryInfo = [[NewsItemCellPOJO alloc] initWithDictionary:lastStoryInfoDic error:nil];
+    
+    if([nowStoryInfo.storyID isEqualToString:lastStoryInfo.storyID]){
+        [self.homeModel getBeforeStories];
+    }
+    
 }
-
 @end
