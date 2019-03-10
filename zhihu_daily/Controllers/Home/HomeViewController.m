@@ -176,12 +176,17 @@ static const CGFloat ExtarHeaderHeight = 38.f;
 #pragma mark - UITableViewDelegate
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     if(section == 0){
-        return 0;
+        return 0.0001f;
     }
     return kSectionHeaderHeight;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    
+    if (section == 0) {
+        NSLog(@"111");
+        return nil;
+    }
     
     SectionTitleView *sHeader = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"SectionHeader"];
     
@@ -216,20 +221,6 @@ static const CGFloat ExtarHeaderHeight = 38.f;
     
     //获取偏移量
     CGFloat y = scrollView.contentOffset.y;
-    
-    if(y > 620){
-        self.headerView.titleLab.alpha = 0;
-        [self.headerView.backgroundView mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.bottom.equalTo(self.headerView).offset(-ExtarHeaderHeight);
-        }];
-        self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
-    }else{
-        self.headerView.titleLab.alpha = 1;
-        [self.headerView.backgroundView mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.bottom.equalTo(self.headerView);
-        }];
-        self.tableView.contentInset = UIEdgeInsetsMake(-KSafeAreaTop, 0, 0, 0);
-    }
     
     if (y <= 0 ) {
         
@@ -274,4 +265,29 @@ static const CGFloat ExtarHeaderHeight = 38.f;
     }
     
 }
+
+- (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section{
+    
+    if(section == 0){
+        self.headerView.titleLab.alpha = 1;
+        [self.headerView.backgroundView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.bottom.equalTo(self.headerView);
+        }];
+        self.tableView.contentInset = UIEdgeInsetsMake(-KSafeAreaTop, 0, 0, 0);
+    }
+    
+}
+
+- (void)tableView:(UITableView *)tableView didEndDisplayingHeaderView:(UIView *)view forSection:(NSInteger)section{
+    
+    if(section == 0){
+        self.headerView.titleLab.alpha = 0;
+        [self.headerView.backgroundView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.bottom.equalTo(self.headerView).offset(-ExtarHeaderHeight);
+        }];
+        self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
+    }
+    
+}
+
 @end

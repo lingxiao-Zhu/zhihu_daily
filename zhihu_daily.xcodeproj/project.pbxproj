@@ -173,7 +173,6 @@
 			children = (
 				BFA99177222F9D9D005DBAB5 /* Category */,
 				BFA99168222E37C5005DBAB5 /* POJO */,
-				BFA99157222E1D5F005DBAB5 /* Animations */,
 				BFA99156222E1D2E005DBAB5 /* Controllers */,
 				BFA99154222E1235005DBAB5 /* Models */,
 				BFA99153222E121F005DBAB5 /* Views */,
@@ -264,13 +263,6 @@
 				BFA9915B222E1E83005DBAB5 /* Home */,
 			);
 			path = Controllers;
-			sourceTree = "<group>";
-		};
-		BFA99157222E1D5F005DBAB5 /* Animations */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Animations;
 			sourceTree = "<group>";
 		};
 		BFA9915A222E1E48005DBAB5 /* Home */ = {
