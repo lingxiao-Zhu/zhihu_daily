@@ -6,9 +6,9 @@
 //  Copyright © 2019年 朱凌霄. All rights reserved.
 //
 
-#import "HeaderView.h"
+#import "HomeHeaderView.h"
 
-@implementation HeaderView
+@implementation HomeHeaderView
 
 /*
 // Only override drawRect: if you perform custom drawing.
@@ -18,14 +18,18 @@
 }
 */
 
-- (instancetype)initWithFrame:(CGRect)frame
+- (instancetype)init
 {
-    self = [super initWithFrame:frame];
+    self = [super init];
     if (self) {
         
         self.backgroundColor = [UIColor clearColor];
         
-        _backgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
+        CGRect frame = CGRectMake(0, 0, kScreenWidth, KSafeAreaTop + kHeaderHeight);
+        
+        self.frame = frame;
+        
+        _backgroundView = [[UIView alloc] initWithFrame:frame];
         
         _backgroundView.backgroundColor = [UIColor colorWithRed:60.f/255.f green:198.f/255.f blue:253.f/255.f alpha: 1];
 
@@ -40,7 +44,7 @@
             [self addSubview:label];
             [label mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.centerX.equalTo(self);
-                make.bottom.equalTo(self.backgroundView).offset(-7);
+                make.bottom.equalTo(self).offset(-8);
             }];
             label;
         });
@@ -49,7 +53,7 @@
             UIButton *btn = [UIButton new];
             [self addSubview:btn];
             [btn mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.centerY.equalTo(self).offset(10.f);
+                make.centerY.equalTo(self.titleLab).offset(-2);
                 make.left.mas_equalTo(self.mas_left).offset(16.f);
                 make.size.mas_equalTo(CGSizeMake(19.f, 19.f));
             }];

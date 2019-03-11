@@ -15,6 +15,7 @@
 #define kScreenHeight [UIScreen mainScreen].bounds.size.height
 #define kScreenBounds [UIScreen mainScreen].bounds
 #define KSafeAreaTop  [[UIApplication sharedApplication] statusBarFrame].size.height
+#define kHeaderHeight 40.f
 
 #import "NetOperation.h"
 #import <UIKit/UIKit.h>

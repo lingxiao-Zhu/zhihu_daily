@@ -7,23 +7,22 @@
 //
 
 #import "HomeViewController.h"
+#import "DetailViewController.h"
 #import "SectionTitleView.h"
 #import "TableCellView.h"
 #import "CarouselView.h"
-#import "HeaderView.h"
+#import "HomeHeaderView.h"
 #import "RefreshView.h"
 #import "CarouselItemPOJO.h"
 
-static const CGFloat kSectionHeaderHeight = 40.f;
 static const CGFloat CarouselViewHeight = 240.f;
 static const CGFloat Distance = -80.f;//限制下拉高度
-static const CGFloat ExtarHeaderHeight = 38.f;
 
 @interface HomeViewController ()
 
 @property(strong, nonatomic)CarouselView *carouselView;
 @property(strong, nonatomic)UITableView *tableView;
-@property(strong, nonatomic)HeaderView *headerView;
+@property(strong, nonatomic)HomeHeaderView *headerView;
 @property(strong, nonatomic)RefreshView *refreshView;
 
 @end
@@ -75,9 +74,11 @@ static const CGFloat ExtarHeaderHeight = 38.f;
 
 -(void)prepareHeader{
     
-    self.headerView = [[HeaderView alloc] initWithFrame:CGRectMake(0.f, 0.f, kScreenWidth, KSafeAreaTop + ExtarHeaderHeight)];
+    self.headerView = [[HomeHeaderView alloc] init];
     
     self.headerView.titleLab.attributedText = [[NSAttributedString alloc] initWithString:@"今日要闻" attributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:18],NSForegroundColorAttributeName:[UIColor whiteColor]}];
+    
+    [self.headerView.leftBtn setBackgroundImage:[UIImage imageNamed:@"Home_Icon"] forState:UIControlStateNormal];
     
     [self.view addSubview:self.headerView];
     
@@ -176,17 +177,12 @@ static const CGFloat ExtarHeaderHeight = 38.f;
 #pragma mark - UITableViewDelegate
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     if(section == 0){
-        return 0.0001f;
+        return 0.00001f;
     }
-    return kSectionHeaderHeight;
+    return kHeaderHeight;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-    
-    if (section == 0) {
-        NSLog(@"111");
-        return nil;
-    }
     
     SectionTitleView *sHeader = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"SectionHeader"];
     
@@ -197,6 +193,8 @@ static const CGFloat ExtarHeaderHeight = 38.f;
     [sHeader setHeaderFooterBackgroundColor:[UIColor colorWithRed:60.f/255.f green:198.f/255.f blue:253.f/255.f alpha:1.f]];
     
     sHeader.textLabel.textColor = [UIColor whiteColor];
+    
+    sHeader.textLabel.alpha = section == 0 ? 0 : 1;
     
     return sHeader;
     
@@ -245,7 +243,7 @@ static const CGFloat ExtarHeaderHeight = 38.f;
         [_refreshView redrawFromProgress:0];
         
         //改变header颜色
-        self.headerView.backgroundView.alpha = y / (CarouselViewHeight-ExtarHeaderHeight);
+        self.headerView.backgroundView.alpha = y / (CarouselViewHeight-kHeaderHeight);
         
     }
     
@@ -283,10 +281,26 @@ static const CGFloat ExtarHeaderHeight = 38.f;
     if(section == 0){
         self.headerView.titleLab.alpha = 0;
         [self.headerView.backgroundView mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.bottom.equalTo(self.headerView).offset(-ExtarHeaderHeight);
+            make.bottom.equalTo(self.headerView).offset(-kHeaderHeight);
         }];
         self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
     }
+    
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    DetailViewController *detailVC = [[DetailViewController alloc] init];
+    
+    NewsItemCellPOJO *newsItemCellPOJO = [self.homeModel cellForRowAtIndexPath:indexPath];
+    
+    detailVC.storyTitle = newsItemCellPOJO.title;
+    
+    detailVC.storyID = newsItemCellPOJO.storyID;
+    
+    [self.navigationController pushViewController:detailVC animated:YES];
+    
+    [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
     
 }
 

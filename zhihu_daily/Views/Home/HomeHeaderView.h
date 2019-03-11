@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 typedef void(^leftBtnTapBlock)(void);
 
-@interface HeaderView : UIView
+@interface HomeHeaderView : UIView
 
 @property (strong,nonatomic)UIView *backgroundView;
 @property (strong,nonatomic)UILabel *titleLab;

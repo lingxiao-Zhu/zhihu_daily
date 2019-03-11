@@ -17,9 +17,14 @@
 		BF196653222E0D2B00125CE3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BF196652222E0D2B00125CE3 /* main.m */; };
 		BF19665D222E0D2B00125CE3 /* zhihu_dailyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BF19665C222E0D2B00125CE3 /* zhihu_dailyTests.m */; };
 		BF196668222E0D2B00125CE3 /* zhihu_dailyUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = BF196667222E0D2B00125CE3 /* zhihu_dailyUITests.m */; };
+		BF3D6A232236443600FE9579 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF3D6A222236443600FE9579 /* DetailViewController.m */; };
+		BF3D6A2F2236638C00FE9579 /* DetailHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = BF3D6A2E2236638C00FE9579 /* DetailHeaderView.m */; };
+		BF3D6A322236642500FE9579 /* DetailToolBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = BF3D6A312236642500FE9579 /* DetailToolBarView.m */; };
+		BF3D6A37223666AB00FE9579 /* DetailStoryPOJO.m in Sources */ = {isa = PBXBuildFile; fileRef = BF3D6A36223666AB00FE9579 /* DetailStoryPOJO.m */; };
+		BF3D6A3B223667A700FE9579 /* DetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BF3D6A3A223667A700FE9579 /* DetailModel.m */; };
 		BF9A0633222FB26000142ED9 /* TableCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = BF9A0632222FB26000142ED9 /* TableCellView.m */; };
 		BF9A06362230C47400142ED9 /* CarouselItemPOJO.m in Sources */ = {isa = PBXBuildFile; fileRef = BF9A06352230C47400142ED9 /* CarouselItemPOJO.m */; };
-		BF9A063922311A5200142ED9 /* HeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = BF9A063822311A5200142ED9 /* HeaderView.m */; };
+		BF9A063922311A5200142ED9 /* HomeHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = BF9A063822311A5200142ED9 /* HomeHeaderView.m */; };
 		BF9A063C2232438F00142ED9 /* RefreshView.m in Sources */ = {isa = PBXBuildFile; fileRef = BF9A063B2232438F00142ED9 /* RefreshView.m */; };
 		BFA9915F222E1EBC005DBAB5 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFA9915E222E1EBC005DBAB5 /* HomeViewController.m */; };
 		BFA99162222E21DD005DBAB5 /* CarouselView.m in Sources */ = {isa = PBXBuildFile; fileRef = BFA99161222E21DD005DBAB5 /* CarouselView.m */; };
@@ -72,12 +77,22 @@
 		BF196663222E0D2B00125CE3 /* zhihu_dailyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = zhihu_dailyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF196667222E0D2B00125CE3 /* zhihu_dailyUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = zhihu_dailyUITests.m; sourceTree = "<group>"; };
 		BF196669222E0D2B00125CE3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BF3D6A212236443600FE9579 /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		BF3D6A222236443600FE9579 /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		BF3D6A2D2236638C00FE9579 /* DetailHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailHeaderView.h; sourceTree = "<group>"; };
+		BF3D6A2E2236638C00FE9579 /* DetailHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailHeaderView.m; sourceTree = "<group>"; };
+		BF3D6A302236642500FE9579 /* DetailToolBarView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailToolBarView.h; sourceTree = "<group>"; };
+		BF3D6A312236642500FE9579 /* DetailToolBarView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailToolBarView.m; sourceTree = "<group>"; };
+		BF3D6A35223666AB00FE9579 /* DetailStoryPOJO.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailStoryPOJO.h; sourceTree = "<group>"; };
+		BF3D6A36223666AB00FE9579 /* DetailStoryPOJO.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailStoryPOJO.m; sourceTree = "<group>"; };
+		BF3D6A39223667A700FE9579 /* DetailModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailModel.h; sourceTree = "<group>"; };
+		BF3D6A3A223667A700FE9579 /* DetailModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailModel.m; sourceTree = "<group>"; };
 		BF9A0631222FB26000142ED9 /* TableCellView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TableCellView.h; sourceTree = "<group>"; };
 		BF9A0632222FB26000142ED9 /* TableCellView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TableCellView.m; sourceTree = "<group>"; };
 		BF9A06342230C47400142ED9 /* CarouselItemPOJO.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CarouselItemPOJO.h; sourceTree = "<group>"; };
 		BF9A06352230C47400142ED9 /* CarouselItemPOJO.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CarouselItemPOJO.m; sourceTree = "<group>"; };
-		BF9A063722311A5200142ED9 /* HeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HeaderView.h; sourceTree = "<group>"; };
-		BF9A063822311A5200142ED9 /* HeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HeaderView.m; sourceTree = "<group>"; };
+		BF9A063722311A5200142ED9 /* HomeHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeHeaderView.h; sourceTree = "<group>"; };
+		BF9A063822311A5200142ED9 /* HomeHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeHeaderView.m; sourceTree = "<group>"; };
 		BF9A063A2232438F00142ED9 /* RefreshView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RefreshView.h; sourceTree = "<group>"; };
 		BF9A063B2232438F00142ED9 /* RefreshView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RefreshView.m; sourceTree = "<group>"; };
 		BFA9915D222E1EBC005DBAB5 /* HomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
@@ -201,6 +216,44 @@
 			path = zhihu_dailyUITests;
 			sourceTree = "<group>";
 		};
+		BF3D6A202236441600FE9579 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				BF3D6A212236443600FE9579 /* DetailViewController.h */,
+				BF3D6A222236443600FE9579 /* DetailViewController.m */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		BF3D6A242236572200FE9579 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				BF3D6A2D2236638C00FE9579 /* DetailHeaderView.h */,
+				BF3D6A2E2236638C00FE9579 /* DetailHeaderView.m */,
+				BF3D6A302236642500FE9579 /* DetailToolBarView.h */,
+				BF3D6A312236642500FE9579 /* DetailToolBarView.m */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		BF3D6A342236668500FE9579 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				BF3D6A35223666AB00FE9579 /* DetailStoryPOJO.h */,
+				BF3D6A36223666AB00FE9579 /* DetailStoryPOJO.m */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		BF3D6A382236678E00FE9579 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				BF3D6A39223667A700FE9579 /* DetailModel.h */,
+				BF3D6A3A223667A700FE9579 /* DetailModel.m */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
 		BFA99150222E11DE005DBAB5 /* General */ = {
 			isa = PBXGroup;
 			children = (
@@ -235,6 +288,7 @@
 		BFA99153222E121F005DBAB5 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				BF3D6A242236572200FE9579 /* Detail */,
 				BFA9915A222E1E48005DBAB5 /* Home */,
 			);
 			path = Views;
@@ -243,6 +297,7 @@
 		BFA99154222E1235005DBAB5 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				BF3D6A382236678E00FE9579 /* Detail */,
 				BFA9915C222E1E96005DBAB5 /* Home */,
 			);
 			path = Models;
@@ -260,6 +315,7 @@
 		BFA99156222E1D2E005DBAB5 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				BF3D6A202236441600FE9579 /* Detail */,
 				BFA9915B222E1E83005DBAB5 /* Home */,
 			);
 			path = Controllers;
@@ -268,14 +324,14 @@
 		BFA9915A222E1E48005DBAB5 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				BF9A063722311A5200142ED9 /* HomeHeaderView.h */,
+				BF9A063822311A5200142ED9 /* HomeHeaderView.m */,
 				BFA99160222E21DD005DBAB5 /* CarouselView.h */,
+				BFA99161222E21DD005DBAB5 /* CarouselView.m */,
 				BFA99172222F693D005DBAB5 /* SectionTitleView.h */,
 				BFA99173222F693D005DBAB5 /* SectionTitleView.m */,
-				BFA99161222E21DD005DBAB5 /* CarouselView.m */,
 				BF9A0631222FB26000142ED9 /* TableCellView.h */,
 				BF9A0632222FB26000142ED9 /* TableCellView.m */,
-				BF9A063722311A5200142ED9 /* HeaderView.h */,
-				BF9A063822311A5200142ED9 /* HeaderView.m */,
 				BF9A063A2232438F00142ED9 /* RefreshView.h */,
 				BF9A063B2232438F00142ED9 /* RefreshView.m */,
 			);
@@ -303,6 +359,7 @@
 		BFA99168222E37C5005DBAB5 /* POJO */ = {
 			isa = PBXGroup;
 			children = (
+				BF3D6A342236668500FE9579 /* Detail */,
 				46CE1BAA222ECDF900A6E0B3 /* Home */,
 			);
 			path = POJO;
@@ -531,19 +588,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF9A063922311A5200142ED9 /* HeaderView.m in Sources */,
+				BF9A063922311A5200142ED9 /* HomeHeaderView.m in Sources */,
 				BFA9916B222E3869005DBAB5 /* NetOperation.m in Sources */,
 				46CE1BB1222FFAD000A6E0B3 /* Utils.m in Sources */,
 				BF196653222E0D2B00125CE3 /* main.m in Sources */,
+				BF3D6A2F2236638C00FE9579 /* DetailHeaderView.m in Sources */,
 				BF9A063C2232438F00142ED9 /* RefreshView.m in Sources */,
+				BF3D6A232236443600FE9579 /* DetailViewController.m in Sources */,
 				BFA9916E222E544F005DBAB5 /* HomeModel.m in Sources */,
+				BF3D6A37223666AB00FE9579 /* DetailStoryPOJO.m in Sources */,
 				BF196645222E0D2900125CE3 /* AppDelegate.m in Sources */,
 				BFA99162222E21DD005DBAB5 /* CarouselView.m in Sources */,
+				BF3D6A322236642500FE9579 /* DetailToolBarView.m in Sources */,
 				46CE1BAD222ECE1F00A6E0B3 /* NewsItemCellPOJO.m in Sources */,
 				BFA9917A222F9DC3005DBAB5 /* NSDateFormatter+Extension.m in Sources */,
 				BF9A0633222FB26000142ED9 /* TableCellView.m in Sources */,
 				BFA9915F222E1EBC005DBAB5 /* HomeViewController.m in Sources */,
 				BF9A06362230C47400142ED9 /* CarouselItemPOJO.m in Sources */,
+				BF3D6A3B223667A700FE9579 /* DetailModel.m in Sources */,
 				BFA99174222F693D005DBAB5 /* SectionTitleView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
