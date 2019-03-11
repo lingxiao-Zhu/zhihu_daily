@@ -16,7 +16,6 @@
 @property(strong, nonatomic)UIScrollView *scrollView;
 @property(strong, nonatomic)DetailHeaderView *detailHeaderView;
 @property(strong, nonatomic)DetailModel *detailModel;
-@property(strong, nonatomic)DetailStoryPOJO *storyDetail;
 
 @end
 
@@ -29,10 +28,31 @@
     [self initSubViews];
 }
 
+-(void)dealloc{
+    [self removeAllObservers];
+}
+
+- (void)configAllObservers{
+    [self.detailModel addObserver:self forKeyPath:@"storyDetail" options:NSKeyValueObservingOptionNew context:nil];
+}
+
+- (void)removeAllObservers{
+    [self.detailModel removeObserver:self forKeyPath:@"storyDetail"];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
+    
+    if([keyPath isEqualToString:@"storyDetail"]){
+        [self.detailHeaderView setImageViewWith:self.detailModel.storyDetail.image];
+    }
+    
+}
+
 -(void)initModel{
-    _detailModel = [[DetailModel alloc] init];
-    _detailModel.storyID = _storyID;
-    [_detailModel getStoryDetail];    
+    self.detailModel = [[DetailModel alloc] init];
+    self.detailModel.storyID = _storyID;
+    [self.detailModel getStoryDetail];
+    [self configAllObservers];
 }
 
 -(void)initSubViews{
@@ -47,6 +67,7 @@
     
     _detailHeaderView = ({
         DetailHeaderView *view = [[DetailHeaderView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 240.f)];
+        [view setTitle:self.storyTitle];
         [self.scrollView addSubview:view];
         view;
     });

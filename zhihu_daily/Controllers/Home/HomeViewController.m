@@ -293,10 +293,12 @@ static const CGFloat Distance = -80.f;//限制下拉高度
     DetailViewController *detailVC = [[DetailViewController alloc] init];
     
     NewsItemCellPOJO *newsItemCellPOJO = [self.homeModel cellForRowAtIndexPath:indexPath];
-    
+        
     detailVC.storyTitle = newsItemCellPOJO.title;
     
     detailVC.storyID = newsItemCellPOJO.storyID;
+    
+    detailVC.imageURLStr = [newsItemCellPOJO.images firstObject];
     
     [self.navigationController pushViewController:detailVC animated:YES];
     

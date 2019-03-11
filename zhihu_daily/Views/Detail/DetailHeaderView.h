@@ -12,6 +12,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface DetailHeaderView : UIView
 
+-(void)setImageViewWith:(NSString *)imageURL;
+
+-(void)setTitle:(NSString *)title;
+
 @end
 
 NS_ASSUME_NONNULL_END
