@@ -16,6 +16,12 @@
 #define kScreenBounds [UIScreen mainScreen].bounds
 #define KSafeAreaTop  [[UIApplication sharedApplication] statusBarFrame].size.height
 #define kHeaderHeight 40.f
+#define kIsIphoneX \
+({BOOL isPhoneX = NO;\
+if (@available(iOS 11.0, *)) {\
+isPhoneX = [[UIApplication sharedApplication] delegate].window.safeAreaInsets.bottom > 0.0;\
+}\
+(isPhoneX);})
 
 #import "NetOperation.h"
 #import <UIKit/UIKit.h>

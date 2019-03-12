@@ -227,7 +227,7 @@ static const CGFloat Distance = -80.f;//限制下拉高度
         
         [_refreshView redrawFromProgress:y/Distance];
         
-        if(scrollView.contentOffset.y < Distance && scrollView.isDragging){
+        if(y < Distance && scrollView.isDragging){
             y = Distance;
             [scrollView setContentOffset:CGPointMake(0, Distance)];
         }

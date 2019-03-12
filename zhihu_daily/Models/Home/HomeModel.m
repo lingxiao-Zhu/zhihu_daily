@@ -54,7 +54,7 @@
         
         self.isLoading = NO;
         
-        NSLog(@"fail");
+        NSLog(@"fail+11");
         
     }];
     

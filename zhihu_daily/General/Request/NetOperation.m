@@ -8,13 +8,17 @@
 
 #import "NetOperation.h"
 
-#define kBaseURL @"https://news-at.zhihu.com"
+#define kBaseURL @"http://news-at.zhihu.com"
 
 @implementation NetOperation
 
 +(void)getRequest:(NSString *)URLString success:(success)success failure:(failure)failure{
     
     AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:kBaseURL]];
+    
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    [manager.requestSerializer setValue:@"Bearer fZTTlAT2QvKUoWNVvLlZNA" forHTTPHeaderField:@"Authorization"];
+    
     [manager GET:URLString parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         if (success) {
             success(responseObject);

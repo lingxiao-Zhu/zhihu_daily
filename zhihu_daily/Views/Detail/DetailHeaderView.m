@@ -31,11 +31,16 @@
     if (self) {
         
         //1.添加图片
-        self.imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, frame.size.height)];
+        self.imageView = [[UIImageView alloc] init];
+        self.imageView.image = [UIImage imageNamed:@"Image_Preview"];
         self.imageView.contentMode = UIViewContentModeScaleAspectFill;
         self.imageView.clipsToBounds = YES;
 
         [self addSubview:self.imageView];
+        
+        [self.imageView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.left.right.bottom.equalTo(self);
+        }];
         
         //2.添加title
         self.titleLabel = [[UILabel alloc] init];
@@ -55,11 +60,10 @@
 
 - (void)setImageViewWith:(NSString *)imageURLStr{
     
-    
     // todo: 使用model的高清图，传递过来的太模糊
     NSURL *imageURL =  [NSURL URLWithString:imageURLStr];
     
-    [_imageView sd_setImageWithURL:imageURL placeholderImage:[UIImage imageNamed:@"Image_Preview"]];
+    [_imageView sd_setImageWithURL:imageURL];
 }
 
 -(void)setTitle:(NSString *)title{
