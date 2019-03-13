@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <UIViewController+MMDrawerController.h>
 #import "HomeModel.h"
 #import "NewsItemCellPOJO.h"
 

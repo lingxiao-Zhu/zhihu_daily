@@ -14,6 +14,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (UIImage *)imageFromURLString: (NSString *) urlstring;
 
++ (void)showLoading:(NSString *)title;
++ (void)showLoading;
++ (void)hideLoading;
++ (void)showToast:(NSString *)msg;
+
 @end
 
 NS_ASSUME_NONNULL_END

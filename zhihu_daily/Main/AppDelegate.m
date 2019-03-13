@@ -6,8 +6,10 @@
 //  Copyright © 2019年 朱凌霄. All rights reserved.
 //
 
+#import <MMDrawerController/MMDrawerController.h>
 #import "AppDelegate.h"
 #import "HomeViewController.h"
+#import "LeftMenuViewController.h"
 
 @interface AppDelegate ()
 
@@ -20,13 +22,27 @@
     // Override point for customization after application launch.
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-    HomeViewController *root = [[HomeViewController alloc] init];
+    //1.创建左侧边栏
+    LeftMenuViewController *leftMenu = [[LeftMenuViewController alloc] init];
     
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:root];
+    //2.创建center
+    HomeViewController *home = [[HomeViewController alloc] init];
+    UINavigationController *homeInNav = [[UINavigationController alloc] initWithRootViewController:home];
     
-    [nav setNavigationBarHidden:YES];
+    //第一行的代码会使右滑失效，第二行添加此行恢复。
+    [homeInNav setNavigationBarHidden:YES];
+    homeInNav.interactivePopGestureRecognizer.delegate=(id)self;
     
-    self.window.rootViewController = nav;
+    MMDrawerController * root = [[MMDrawerController alloc] initWithCenterViewController:homeInNav leftDrawerViewController:leftMenu];
+    
+    //设置打开/关闭抽屉的手势
+    root.openDrawerGestureModeMask  = MMOpenDrawerGestureModeAll;
+    root.closeDrawerGestureModeMask = MMCloseDrawerGestureModeAll;
+    
+    //设置侧边栏宽度
+    [root setMaximumLeftDrawerWidth:200.f];
+    
+    self.window.rootViewController = root;
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     

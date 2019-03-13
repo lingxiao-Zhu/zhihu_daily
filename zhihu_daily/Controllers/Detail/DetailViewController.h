@@ -13,7 +13,6 @@ NS_ASSUME_NONNULL_BEGIN
 @interface DetailViewController : UIViewController
 
 @property(weak, nonatomic)NSString *storyTitle;
-@property(weak, nonatomic)NSString *imageURLStr;
 @property(weak, nonatomic)NSString *storyID;
 
 @end

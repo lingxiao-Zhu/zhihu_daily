@@ -32,7 +32,7 @@
         
         //1.添加图片
         self.imageView = [[UIImageView alloc] init];
-        self.imageView.image = [UIImage imageNamed:@"Image_Preview"];
+        self.imageView.backgroundColor = [UIColor grayColor];
         self.imageView.contentMode = UIViewContentModeScaleAspectFill;
         self.imageView.clipsToBounds = YES;
 

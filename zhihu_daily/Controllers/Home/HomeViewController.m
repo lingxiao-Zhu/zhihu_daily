@@ -42,6 +42,18 @@ static const CGFloat Distance = -80.f;//限制下拉高度
     [self.homeModel getLatestStories];
 }
 
+//返回home页面后，恢复
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.mm_drawerController.openDrawerGestureModeMask = MMOpenDrawerGestureModeAll;
+}
+
+//离开home页面后，不能打开侧边栏
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    self.mm_drawerController.openDrawerGestureModeMask = MMOpenDrawerGestureModeNone;
+}
+
 -(void)prepareTableView{
     
     UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight)];
@@ -61,15 +73,10 @@ static const CGFloat Distance = -80.f;//限制下拉高度
 }
 
 -(void)prepareCarouselView{
-    
     CGRect cViewSize = CGRectMake(0, 0, kScreenWidth, CarouselViewHeight);
-    
     self.carouselView = [[CarouselView alloc] initWithFrame:cViewSize];
-    
     self.tableView.tableHeaderView = self.carouselView;
-    
     [self prepareHeader];
-    
 }
 
 -(void)prepareHeader{
@@ -79,6 +86,12 @@ static const CGFloat Distance = -80.f;//限制下拉高度
     self.headerView.titleLab.attributedText = [[NSAttributedString alloc] initWithString:@"今日要闻" attributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:18],NSForegroundColorAttributeName:[UIColor whiteColor]}];
     
     [self.headerView.leftBtn setBackgroundImage:[UIImage imageNamed:@"Home_Icon"] forState:UIControlStateNormal];
+    
+    __weak typeof(self)weakSelf = self;
+    self.headerView.leftBtnTapAction = ^{
+        __strong typeof(weakSelf)strongSelf = weakSelf;
+        [strongSelf.mm_drawerController openDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
+    };
     
     [self.view addSubview:self.headerView];
     
@@ -265,7 +278,6 @@ static const CGFloat Distance = -80.f;//限制下拉高度
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section{
-    
     if(section == 0){
         self.headerView.titleLab.alpha = 1;
         [self.headerView.backgroundView mas_updateConstraints:^(MASConstraintMaker *make) {
@@ -273,11 +285,9 @@ static const CGFloat Distance = -80.f;//限制下拉高度
         }];
         self.tableView.contentInset = UIEdgeInsetsMake(-KSafeAreaTop, 0, 0, 0);
     }
-    
 }
 
 - (void)tableView:(UITableView *)tableView didEndDisplayingHeaderView:(UIView *)view forSection:(NSInteger)section{
-    
     if(section == 0){
         self.headerView.titleLab.alpha = 0;
         [self.headerView.backgroundView mas_updateConstraints:^(MASConstraintMaker *make) {
@@ -285,7 +295,6 @@ static const CGFloat Distance = -80.f;//限制下拉高度
         }];
         self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
     }
-    
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -297,8 +306,6 @@ static const CGFloat Distance = -80.f;//限制下拉高度
     detailVC.storyTitle = newsItemCellPOJO.title;
     
     detailVC.storyID = newsItemCellPOJO.storyID;
-    
-    detailVC.imageURLStr = [newsItemCellPOJO.images firstObject];
     
     [self.navigationController pushViewController:detailVC animated:YES];
     

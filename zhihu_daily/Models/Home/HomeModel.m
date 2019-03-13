@@ -13,7 +13,11 @@
 
 -(void)getLatestStories{
     
+    [Utils showLoading];
+    
     [NetOperation getRequest:@"/api/4/news/latest" success:^(id  _Nonnull responseObject) {
+        
+        [Utils hideLoading];
         
         NSDictionary *jsonDic = responseObject;
         
@@ -27,7 +31,9 @@
         self.currentLoadDayStr = jsonDic[@"date"];
         
     } failure:^(NSError * _Nonnull error) {
+        
         NSLog(@"fail");
+        
     }];
     
 }

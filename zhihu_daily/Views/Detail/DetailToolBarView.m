@@ -8,15 +8,25 @@
 
 #import "DetailToolBarView.h"
 
-@implementation DetailToolBarView
+//单个按钮
+@interface HPYButton : UIButton
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
+@end
+
+@implementation HPYButton
+
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    self.imageView.center = CGPointMake(self.frame.size.width/2, self.frame.size.height/2);
+    self.titleLabel.center = CGPointMake(self.frame.size.width/2+10.f, self.frame.size.height/2-8.f);
+    self.titleLabel.bounds = CGRectMake(0, 0, 30, 10);
+    self.titleLabel.font = [UIFont systemFontOfSize:8];
+    self.titleLabel.textAlignment = NSTextAlignmentCenter;
 }
-*/
+
+@end
+
+@implementation DetailToolBarView
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
@@ -29,8 +39,45 @@
         
         self.backgroundColor = [UIColor whiteColor];
         
+        CGFloat btn_width = frame.size.width / 5;
+        CGFloat btn_height = frame.size.height - [[UIApplication sharedApplication] delegate].window.safeAreaInsets.bottom;
+        
+        // 1.添加返回按钮
+        HPYButton *btnBack = [[HPYButton alloc] initWithFrame:CGRectMake(0, 0, btn_width, btn_height)];
+        [btnBack setImage:[UIImage imageNamed:@"News_Navigation_Arrow"] forState:UIControlStateNormal];
+        [btnBack addTarget:self action:@selector(backAction:) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:btnBack];
+    
+        // 2.添加下一篇按钮
+        HPYButton *btnNext = [[HPYButton alloc] initWithFrame:CGRectMake(btn_width, 0, btn_width, btn_height)];
+        [btnNext setImage:[UIImage imageNamed:@"News_Navigation_Next"] forState:UIControlStateNormal];
+        [self addSubview:btnNext];
+        
+        // 3.添加点赞按钮
+        HPYButton *btnVote = [[HPYButton alloc] initWithFrame:CGRectMake(btn_width*2, 0, btn_width, btn_height)];
+        [btnVote setImage:[UIImage imageNamed:@"News_Navigation_Vote"] forState:UIControlStateNormal];
+        [btnVote setTitle:@"100" forState:UIControlStateNormal];
+        [btnVote setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+        [self addSubview:btnVote];
+        
+        // 4.添加分享按钮
+        HPYButton *btnShare = [[HPYButton alloc] initWithFrame:CGRectMake(btn_width*3, 0, btn_width, btn_height)];
+        [btnShare setImage:[UIImage imageNamed:@"News_Navigation_Share"] forState:UIControlStateNormal];
+        [self addSubview:btnShare];
+        
+        // 5.添加评论按钮
+        HPYButton *btnComment = [[HPYButton alloc] initWithFrame:CGRectMake(btn_width*4, 0, btn_width, btn_height)];
+        [btnComment setImage:[UIImage imageNamed:@"News_Navigation_Comment"] forState:UIControlStateNormal];
+        [btnComment setTitle:@"100" forState:UIControlStateNormal];
+        [btnComment setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [self addSubview:btnComment];
+        
     }
     return self;
+}
+
+- (void)backAction:(id)sender {
+    !_back ? :_back();
 }
 
 @end

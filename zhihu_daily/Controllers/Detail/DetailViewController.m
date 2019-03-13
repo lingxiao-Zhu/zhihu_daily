@@ -40,10 +40,12 @@ static const CGFloat kHeaderViewHeight = 240.f;
 
 - (void)configAllObservers{
     [self.detailModel addObserver:self forKeyPath:@"storyDetail" options:NSKeyValueObservingOptionNew context:nil];
+    [self.detailModel addObserver:self forKeyPath:@"storyExtra" options:NSKeyValueObservingOptionNew context:nil];
 }
 
 - (void)removeAllObservers{
     [self.detailModel removeObserver:self forKeyPath:@"storyDetail"];
+    [self.detailModel removeObserver:self forKeyPath:@"storyExtra"];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
@@ -51,12 +53,16 @@ static const CGFloat kHeaderViewHeight = 240.f;
         [self.detailHeaderView setImageViewWith:self.detailModel.storyDetail.image];
         [self.webView loadHTMLString:self.detailModel.htmlStr baseURL:[[NSBundle mainBundle]bundleURL]];
     }
+    if([keyPath isEqualToString:@"storyExtra"]){
+//        UILabel *commentsLabel = [[UILabel alloc] init];
+    }
 }
 
 -(void)initModel{
     self.detailModel = [[DetailModel alloc] init];
     self.detailModel.storyID = _storyID;
-    [self.detailModel getStoryDetail];
+    [self.detailModel fetchStoryDetail];
+    [self.detailModel fetchStoryExtra];
     [self configAllObservers];
 }
 
@@ -66,6 +72,11 @@ static const CGFloat kHeaderViewHeight = 240.f;
     
     _toolBarView = ({
         DetailToolBarView *view = [[DetailToolBarView alloc] initWithFrame:CGRectMake(0, kScreenHeight - kToolBarHeight, kScreenWidth, kToolBarHeight)];;
+        __weak typeof(self)weakSelf = self;
+        view.back = ^{
+           __strong typeof(weakSelf)strongSelf = weakSelf;
+            [strongSelf.navigationController popViewControllerAnimated:YES];
+        };
         [self.view addSubview:view];
         view;
     });
@@ -107,7 +118,6 @@ static const CGFloat kHeaderViewHeight = 240.f;
 }
 
 - (void)webView:(WKWebView *)webView didFinishNavigation:(null_unspecified WKNavigation *)navigation {
-    
     [webView evaluateJavaScript:@"document.body.scrollHeight" completionHandler:^(id _Nullable data, NSError * _Nullable error) {
         CGRect frame = self.webView.frame;
         frame.size.height = [data floatValue];

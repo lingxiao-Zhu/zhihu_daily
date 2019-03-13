@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "DetailStoryPOJO.h"
+#import "DetailExtraPOJO.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -15,8 +16,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property(strong, nonatomic)NSString *storyID;
 @property(strong, nonatomic)DetailStoryPOJO* storyDetail;
+@property(strong, nonatomic)DetailExtraPOJO* storyExtra;
 
--(void)getStoryDetail;
+-(void)fetchStoryDetail;
+-(void)fetchStoryExtra;
 -(NSString *)htmlStr;
 
 @end

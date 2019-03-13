@@ -10,12 +10,16 @@
 
 @implementation DetailModel
 
-- (void)getStoryDetail{
+- (void)fetchStoryDetail{
+    
+    [Utils showLoading];
     
     NSString *strUrl = [NSString stringWithFormat:@"/api/4/news/%@", _storyID];
     
     [NetOperation getRequest:strUrl success:^(id  _Nonnull responseObject) {
         
+        [Utils hideLoading];
+            
         DetailStoryPOJO *storyDetail = [[DetailStoryPOJO alloc] initWithDictionary:responseObject error:nil];
         
         [self setValue:storyDetail forKey:@"storyDetail"];
@@ -23,6 +27,24 @@
     } failure:^(NSError * _Nonnull error) {
         
         NSLog(@"fail_DetailModel");
+        
+    }];
+    
+}
+
+- (void)fetchStoryExtra{
+    
+    NSString *strUrl = [NSString stringWithFormat:@"/api/4/story-extra/%@", _storyID];
+    
+    [NetOperation getRequest:strUrl success:^(id  _Nonnull responseObject) {
+        
+        DetailExtraPOJO *storyExtra = [[DetailExtraPOJO alloc] initWithDictionary:responseObject error:nil];
+        
+        [self setValue:storyExtra forKey:@"storyExtra"];
+        
+    } failure:^(NSError * _Nonnull error) {
+        
+        NSLog(@"fail_storyExtra");
         
     }];
     
